@@ -53,25 +53,33 @@ double Accounts::applyDepositTax(const double amount) {
 }
 
 //-------
+void Accounts::displaySuccess() {
+	std::cout << "\n---- Successful Transaction ----\n";
+}
+void Accounts::displayFailure() {
+	std::cout << "\n---- Insufficient Funds ----\n";
+}
+
+//-------
 
 void Accounts::withdrawFromAccount(double withAmount) {
 	if (withAmount > 10000) {
 		if (applyWithTax(withAmount) <= accountBalance)
 		{
 			accountBalance -= applyWithTax(withAmount);
-			std::cout << "\n---- Successful Transaction ----\n";
+			displaySuccess();
 		}
 		else {
-			std::cout << "\n---- Insufficient Funds ----\n";
+			displayFailure();
 		}
 	}
 	else {
 		if (withAmount <= accountBalance) {
 			accountBalance -= withAmount;
-			std::cout << "\n---- Successful Transaction ----\n";
+			displaySuccess();
 		}
 		else {
-			std::cout << "\n---- Insufficient Funds ----\n";
+			displayFailure();
 		}
 	}
 }
@@ -79,10 +87,10 @@ void Accounts::withdrawFromAccount(double withAmount) {
 void Accounts::depositToAccount(double depositAmount) {
 	if (depositAmount > 20000) {
 		accountBalance += applyDepositTax(depositAmount);
-		std::cout << "\n---- Successful Transaction ----\n";
+		displaySuccess();
 	}
 	else {
 		accountBalance += depositAmount;
-		std::cout << "\n---- Successful Transaction ----\n";
+		displayFailure();
 	}
 }

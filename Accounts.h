@@ -1,5 +1,6 @@
 #pragma once
 #include<string>
+#include<iostream>
 
 class Accounts {
 private:
@@ -36,4 +37,7 @@ public:
 	// Account Witdhrawl 
 	void withdrawFromAccount(double withAmount);
 	void depositToAccount(double depositAmount);
+
+	static void displaySuccess();
+	static void displayFailure();
 };
